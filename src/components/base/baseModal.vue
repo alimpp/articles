@@ -99,8 +99,8 @@ const props = defineProps({
   justify-content: center;
   align-items: center;
   background: rgba(6, 6, 6, 0.5);
-  backdrop-filter: blur(0px);
-  -webkit-backdrop-filter: blur(0px);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(3px);
   transition: 1s;
   .base {
     border-radius: 5px;
