@@ -17,6 +17,7 @@
         <themeSwicther class="mt-1" />
       </div>
     </div>
+    <applicationHeader />
     <router-view></router-view>
   </div>
 </template>
@@ -28,6 +29,7 @@ import loginModal from "@/components/modals/loginModal";
 import registerModal from "@/components/modals/registerModal";
 import themeSwicther from "@/components/themeSwicther";
 import profileModal from "@/components/modals/profileModal";
+import applicationHeader from "@/components/applicationHeader";
 const theme = applicationTheme();
 
 const watchTheme = computed(() => {
