@@ -26,12 +26,12 @@
 <script setup>
 import { computed } from "vue";
 const username = computed(() => {
-  if (props.icon === "bi-person") {
+  if (props.icon === "user") {
     return true;
   }
 });
 const password = computed(() => {
-  if (props.icon === "bi-eye-slash") {
+  if (props.icon === "password") {
     return true;
   }
 });
@@ -46,7 +46,7 @@ const gender = computed(() => {
   }
 })
 const email = computed(() => {
-  if(props.icon === "bi-envelope-at"){
+  if(props.icon === "email"){
     return true
   }
 })

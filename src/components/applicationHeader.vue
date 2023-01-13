@@ -2,7 +2,7 @@
   <div class="app-header">
 
       <span class="white_color size_2xl">Articles Ready Now ...!</span>
-      <p class="white_color size_very_small">
+      <p class="white_color size_very_small px-3">
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nesciunt
         dolores nam voluptatibus! Omnis suscipit ducimus est, deserunt
         reprehenderit...!
