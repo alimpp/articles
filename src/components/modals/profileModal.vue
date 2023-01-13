@@ -1,7 +1,7 @@
 <template>
-  <baseModal color="primary" name="Sign up" width="90%" btnSmallSize="true">
+  <baseModal color="danger" name="JhonDoe" width="90%" btnSmallSize="true" icon="profile" >
     <template #modalContent>
-      <span>Register Modal</span>
+      <span>Login Modal</span>
     </template>
   </baseModal>
 </template>

@@ -1,5 +1,5 @@
 <template>
-  <baseModal color="danger" name="Login" width="90%" btnSmallSize="true">
+  <baseModal color="danger" name="Sign in" width="90%" btnSmallSize="true">
     <template #modalContent>
       <span>Login Modal</span>
     </template>

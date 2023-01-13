@@ -11,8 +11,9 @@
         <img src="@/assets/icons/app-logo.png" alt="app logo" />
       </div>
       <div class="item-container">
-        <loginModal />
-        <registerModal class="mx-2" />
+        <profileModal class="mt-2 mx-2" />
+        <loginModal class="mt-2 mx-3" />
+        <registerModal class="mx-3 mt-2" />
         <themeSwicther class="mt-1" />
       </div>
     </div>
@@ -26,6 +27,7 @@ import { applicationTheme } from "@/stores/applicationTheme";
 import loginModal from "@/components/modals/loginModal";
 import registerModal from "@/components/modals/registerModal";
 import themeSwicther from "@/components/themeSwicther";
+import profileModal from "@/components/modals/profileModal";
 const theme = applicationTheme();
 
 const watchTheme = computed(() => {
