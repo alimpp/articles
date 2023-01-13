@@ -1,0 +1,34 @@
+@import "../_variables/themeColors";
+
+.application_dark_mode_theme {
+  background-color: var(--dark-200-color);
+  color: var(--light-color);
+  transition: 0.3s;
+}
+.application_light_mode_theme {
+  background-color: var(--light-color);
+  color: var(--dark-color);
+  transition: 0.3s;
+}
+
+.nav_dark_mode_theme {
+  background-color: var(--dark-color);
+  color: var(--light-color);
+  transition: 0.3s;
+}
+.nav_light_mode_theme {
+  background-color: var(--white-color);
+  color: var(--dark-color);
+  transition: 0.3s;
+}
+
+.basemodal_dark_mode_theme {
+  background-color: var(--dark-color);
+  color: var(--light-color);
+  transition: 0.3s;
+}
+.basemodal_light_mode_theme {
+  background-color: var(--white-color);
+  color: var(--dark-color);
+  transition: 0.3s;
+}

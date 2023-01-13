@@ -1,0 +1,52 @@
+@import "./_class/font";
+@import "./_class/colors";
+@import "./_class/fontSize";
+@import "./_class/background";
+@import "./_class/theme";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "shabnam";
+}
+
+.app_pointer {
+  cursor: pointer;
+}
+
+.app_animation {
+  animation: 1s app_animation;
+}
+
+.app_link {
+  text-decoration: none;
+}
+.app_link:hover {
+  color: #fff;
+}
+
+@keyframes app_animation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 2px;
+  border: 0px solid #2c2c2c;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 5px;
+  background: #eeeeee;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background: #cac8c8;
+}

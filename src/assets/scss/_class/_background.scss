@@ -1,0 +1,33 @@
+@import "../_variables/themeColors";
+
+.primary_color_bg {
+  background-color: var(--primary-color);
+}
+
+.danger_color_bg {
+  background-color: var(--danger-color);
+}
+
+.warning_color_bg {
+  background-color: var(--warning-color);
+}
+
+.green_color_bg {
+  background-color: var(--green-color);
+}
+
+.gray_color_bg {
+  background-color: var(--gray-color);
+}
+
+.dark_color_bg {
+  background-color: var(--dark-color);
+}
+
+.light_color_bg {
+  background-color: var(--light-color);
+}
+
+.white_color_bg {
+  background-color: var(--white-color);
+}

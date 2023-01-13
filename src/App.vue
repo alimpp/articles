@@ -1,30 +1,23 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  <div
+    class="app"
+    :class="{
+      application_dark_mode_theme: watchTheme === 'dark',
+      application_light_mode_theme: watchTheme === 'light',
+    }"
+  >
+    <router-view></router-view>
+  </div>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script setup>
+import { computed } from "vue";
+import { applicationTheme } from "@/stores/applicationTheme";
+const theme = applicationTheme();
 
-nav {
-  padding: 30px;
+const watchTheme = computed(() => {
+  return theme.themeStatus;
+});
+</script>
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
-</style>
+<style></style>
