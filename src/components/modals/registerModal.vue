@@ -18,6 +18,7 @@
             placeholder="Username"
             icon="user"
             class="mt-2"
+            v-model="data.username"
           />
           <baseInput
             :hasError="errors.email"
@@ -25,6 +26,7 @@
             placeholder="Email"
             icon="email"
             class="mt-2"
+            v-model="data.email"
           />
           <baseInput
             :hasError="errors.password"
@@ -32,9 +34,15 @@
             placeholder="Password"
             icon="password"
             class="mt-2"
+            v-model="data.password"
           />
           <div class="d-flex">
-            <baseButton class="mt-2 mb-4" color="primary" name="Sign up" />
+            <baseButton
+              @click="registerUser"
+              class="mt-2 mb-4"
+              color="primary"
+              name="Sign up"
+            />
           </div>
         </div>
       </div>
@@ -43,21 +51,35 @@
 </template>
 
 <script setup>
-import {ref} from 'vue'
+import { ref } from "vue";
 import baseModal from "@/components/base/baseModal";
 import baseInput from "@/components/base/baseInput";
 import baseButton from "@/components/base/baseButton";
+import { applicationAuthApi } from "@/stores/api/applicationAuthApi";
+
+const authApi = applicationAuthApi();
 
 const errors = ref({
   username: false,
   email: false,
   password: false,
 });
+
+const data = ref({
+  username: "",
+  email: "",
+  password: "",
+});
+
 const textErrors = ref({
   username: "The username must not be empty and must be more than 5 characters",
   email: "The email must not be empty and must be more than 8 characters",
   password: "The password must not be empty and must be more than 5 characters",
 });
+
+const registerUser = () => {
+  authApi.registerUser(data.value);
+};
 </script>
 
 <style></style>
