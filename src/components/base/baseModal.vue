@@ -8,6 +8,7 @@
           'bi-person': profile,
           'bi-briefcase': deatail,
           'bi-box-arrow-in-right': login,
+          'bi-pen': pen,
         }"
       ></i>
     </span>
@@ -61,6 +62,12 @@ const deatail = computed(() => {
 
 const login = computed(() => {
   if (props.icon === "login") {
+    return true;
+  }
+});
+
+const pen = computed(() => {
+  if (props.icon === "pen") {
     return true;
   }
 });

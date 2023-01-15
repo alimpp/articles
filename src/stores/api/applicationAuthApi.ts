@@ -50,6 +50,8 @@ export const applicationAuthApi = defineStore("auth", {
           const accessToken = res.data.token;
           userProfile.updateToken(accessToken);
           updateLocalStorage("token", userProfile.token);
+          userProfile .updateUsername(data.username)
+          updateLocalStorage("profile", userProfile.username);
           toast_message("Sign in successfully", "success", 2000);
           userProfile.isAuthenticated = true;
           setTimeout(() => {
@@ -66,6 +68,13 @@ export const applicationAuthApi = defineStore("auth", {
             );
           }
         });
+    },
+    logoutUser() {
+      userProfile.isAuthenticated = false
+      userProfile.token = ""
+      axios.defaults.headers.common["Authorization"] = "";
+      localStorage.removeItem("token");
+      location.reload();
     },
   },
 });

@@ -8,6 +8,7 @@
         'bi-person-lines-fill': name,
         'bi-gender-ambiguous': gender,
         'bi-envelope-at': email,
+        'bi-pen': pen,
       }"
     ></i>
     <input
@@ -50,6 +51,11 @@ const email = computed(() => {
     return true
   }
 })
+const pen = computed(() => {
+  if (props.icon === "pen") {
+    return true;
+  }
+});
 const props = defineProps({
   type: {
     type: String,
