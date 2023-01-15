@@ -1,15 +1,30 @@
 <template>
   <div class="home-page">
-    <h1>Home Page Ready...!</h1>
+    {{dataSource}}
   </div>
 </template>
 
-<script>
-export default {
+<script setup>
+import { onMounted , computed } from "vue";
+import { applicationArticlesApi } from "@/stores/api/applicationArticlesApi";
+import {applicationArticles} from '@/stores/applicationArticles'
 
-}
+const articlesApiModule = applicationArticlesApi();
+const articlesModule = applicationArticles()
+
+const dataSource = computed(() => {
+  return articlesModule.articlesDataSource
+})
+
+onMounted(() => {
+  return articlesApiModule.articles();
+});
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+// .home-page{
+//   height: 90vh;
+//   overflow-y: scroll;
+//   overflow-x: hidden;
+// }
 </style>

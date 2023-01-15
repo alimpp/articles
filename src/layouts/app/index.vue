@@ -49,7 +49,6 @@ const checkAuth = computed(() => {
 <style lang="scss" scoped>
 .main-layout {
   width: 100%;
-  height: 100vh;
   display: flex;
   flex-direction: column;
   .application-nav {
