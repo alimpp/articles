@@ -6,7 +6,7 @@ import {
 } from "@/services/applicationPath";
 import { applicationArticles } from "../applicationArticles";
 
-const articlesModule = applicationArticles()
+const articlesModule = applicationArticles();
 
 export const applicationArticlesApi = defineStore("articlesapi", {
   actions: {
@@ -14,11 +14,19 @@ export const applicationArticlesApi = defineStore("articlesapi", {
       const res = await axios
         .get(`${application_base_url}${application_path.GET.ARTICLES}`)
         .then((res) => {
-            articlesModule.articles = res.data
+          articlesModule.articles = res.data;
         })
         .catch((err) => {
-            console.log(err);
-        })
+          console.log(err);
+        });
+    },
+    async singleArticle(id: any) {
+      const res = await axios.get(
+        `${application_base_url}${application_path.GET.SINGLE_ARTICLES}/${id}`
+      )
+      .then((res) => {
+        articlesModule.article = res.data;
+      })
     },
   },
 });

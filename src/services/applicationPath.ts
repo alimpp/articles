@@ -4,6 +4,7 @@ export const application_auth_base_url: string = "https://bookcart.azurewebsites
 export const application_path = {
   GET: {
     ARTICLES: "/posts",
+    SINGLE_ARTICLES: "/posts",
   },
   POST: {
     LOGIN: "/api/Login",

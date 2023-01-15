@@ -32,3 +32,14 @@
   color: var(--dark-color);
   transition: 0.3s;
 }
+
+.basecard_dark_mode_theme {
+  background-color: var(--dark-color);
+  color: var(--light-color);
+  transition: 0.3s;
+}
+.basecard_light_mode_theme {
+  background-color: var(--light-color);
+  color: var(--dark-color);
+  transition: 0.3s;
+}
