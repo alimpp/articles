@@ -1,28 +1,34 @@
 <template>
   <baseModal color="danger" name="Sign in" width="350px" btnSmallSize="true">
     <template #modalContent>
-        <div class="form-container px-1">
-          <span class="primary_color size_large py-2">SIGN IN TO ARTICLES</span>
-          <baseInput
-            :hasError="errors.username"
-            :textError="textErrors.username"
-            placeholder="Username"
-            icon="user"
-            class="mt-2"
-            v-model="data.username"
+      <div class="form-container px-1">
+        <span class="primary_color size_large py-2">SIGN IN TO ARTICLES</span>
+        <baseInput
+          :hasError="errors.username"
+          :textError="textErrors.username"
+          placeholder="Username"
+          icon="user"
+          class="mt-2"
+          v-model="data.username"
+        />
+        <baseInput
+          :hasError="errors.password"
+          :textError="textErrors.password"
+          placeholder="Password"
+          icon="password"
+          class="mt-2"
+          v-model="data.password"
+        />
+        <div class="d-flex">
+          <baseButton
+            @click="loginUser"
+            class="mt-2 mb-4"
+            color="primary"
+            name="Sign in"
+            :loading="loading"
           />
-          <baseInput
-            :hasError="errors.password"
-            :textError="textErrors.password"
-            placeholder="Password"
-            icon="password"
-            class="mt-2"
-            v-model="data.password"
-          />
-          <div class="d-flex">
-            <baseButton @click="loginUser" class="mt-2 mb-4" color="primary" name="Sign in" />
-          </div>
         </div>
+      </div>
     </template>
   </baseModal>
 </template>
@@ -35,6 +41,7 @@ import baseButton from "@/components/base/baseButton";
 import { applicationAuthApi } from "@/stores/api/applicationAuthApi";
 
 const authApi = applicationAuthApi();
+const loading = ref(false)
 
 const data = ref({
   username: "",
@@ -51,7 +58,7 @@ const textErrors = ref({
   password: "The password must not be empty and must be more than 5 characters",
 });
 
-const loginUser = () => {
+const loginUser = async () => {
   let access = true;
   if (data.value.username.length < 5) {
     access = false;
@@ -68,17 +75,19 @@ const loginUser = () => {
     errors.value.password = false;
   }
   if (access) {
-    authApi.loginUser(data.value);
+   loading.value = true
+   await authApi.loginUser(data.value);
+   loading.value = false
   }
 };
 </script>
 
 <style lang="scss" scoped>
-  .form-container {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
+.form-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 </style>

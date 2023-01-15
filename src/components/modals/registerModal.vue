@@ -48,6 +48,7 @@ import baseButton from "@/components/base/baseButton";
 import { applicationAuthApi } from "@/stores/api/applicationAuthApi";
 
 const authApi = applicationAuthApi();
+const loading = ref(false)
 
 const errors = ref({
   username: false,
@@ -68,7 +69,7 @@ const textErrors = ref({
   password: "The password must not be empty and must be more than 5 characters",
 });
 
-const registerUser = () => {
+const registerUser = async () => {
   let access = true;
   if (data.value.username.length < 5) {
     access = false;
@@ -92,7 +93,9 @@ const registerUser = () => {
     errors.value.password = false;
   }
   if (access) {
-    authApi.registerUser(data.value);
+    loading.value = true
+    await authApi.registerUser(data.value);
+    loading.value = false
   }
 };
 </script>

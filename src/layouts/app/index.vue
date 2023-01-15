@@ -12,6 +12,7 @@
       </div>
       <div class="item-container">
         <profileModal v-if="checkAuth" class="mt-2 mx-2" />
+        <createArticleModal v-if="checkAuth" class="mt-2 mx-2 mobile-size" />
         <loginModal v-if="!checkAuth" class="mt-2 mx-3" />
         <registerModal v-if="!checkAuth" class="mx-3 mt-2" />
         <themeSwicther class="mt-1" />
@@ -31,6 +32,7 @@ import themeSwicther from "@/components/themeSwicther";
 import profileModal from "@/components/modals/profileModal";
 import applicationHeader from "@/components/applicationHeader";
 import { applicationUserProfile } from "@/stores/applicationUserProfile";
+import createArticleModal from "@/components/modals/createArticleModal";
 
 const userProfile = applicationUserProfile();
 const theme = applicationTheme();
@@ -40,7 +42,7 @@ const watchTheme = computed(() => {
 });
 
 const checkAuth = computed(() => {
-  return userProfile.isAuthenticated
+  return userProfile.isAuthenticated;
 });
 </script>
 
@@ -67,6 +69,14 @@ const checkAuth = computed(() => {
       display: flex;
       justify-content: end;
     }
+  }
+}
+.mobile-size{
+  display: inline;
+}
+@media (max-width: 900px) {
+  .mobile-size{
+    display: none;
   }
 }
 </style>
