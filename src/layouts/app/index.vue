@@ -11,11 +11,13 @@
         <img src="@/assets/icons/app-logo.png" alt="app logo" />
       </div>
       <div class="item-container">
-        <loginModal />
-        <registerModal class="mx-2" />
+        <profileModal v-if="checkAuth" class="mt-2 mx-2" />
+        <loginModal v-if="!checkAuth" class="mt-2 mx-3" />
+        <registerModal v-if="!checkAuth" class="mx-3 mt-2" />
         <themeSwicther class="mt-1" />
       </div>
     </div>
+    <applicationHeader />
     <router-view></router-view>
   </div>
 </template>
@@ -26,10 +28,19 @@ import { applicationTheme } from "@/stores/applicationTheme";
 import loginModal from "@/components/modals/loginModal";
 import registerModal from "@/components/modals/registerModal";
 import themeSwicther from "@/components/themeSwicther";
+import profileModal from "@/components/modals/profileModal";
+import applicationHeader from "@/components/applicationHeader";
+import { applicationUserProfile } from "@/stores/applicationUserProfile";
+
+const userProfile = applicationUserProfile();
 const theme = applicationTheme();
 
 const watchTheme = computed(() => {
   return theme.themeStatus;
+});
+
+const checkAuth = computed(() => {
+  return userProfile.isAuthenticated
 });
 </script>
 

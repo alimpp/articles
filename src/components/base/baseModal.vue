@@ -1,27 +1,17 @@
 <template>
   <div class="base-modal-container">
-    <button
-      class="btn white_color"
-      :class="{
-        primary_color_bg: primaryColor,
-        danger_color_bg: dangerColor,
-        warning_color_bg: warningColor,
-        light_color_bg: lightColor,
-        'btn-sm': btnSmallSize,
-      }"
-      @click="changeStatusModal"
-    >
-      <div
-        class="spinner-border spinner-border-sm text-light"
-        role="status"
-        v-if="loading"
-      ></div>
+    <span class="app_pointer" @click="changeStatusModal">
+      {{ name }}
       <i
         class="bi"
-        :class="{ 'bi-person': profile, 'bi-briefcase': deatail , 'bi-box-arrow-in-right': login }"
+        :class="{
+          'bi-person': profile,
+          'bi-briefcase': deatail,
+          'bi-box-arrow-in-right': login,
+          'bi-pen': pen,
+        }"
       ></i>
-      {{ name }}
-    </button>
+    </span>
     <div class="base-modal" v-if="isOpen">
       <div
         class="base app_animation"
@@ -76,36 +66,13 @@ const login = computed(() => {
   }
 });
 
-const primaryColor = computed(() => {
-  if (props.color === "primary") {
-    return true;
-  }
-});
-
-const dangerColor = computed(() => {
-  if (props.color === "danger") {
-    return true;
-  }
-});
-
-const warningColor = computed(() => {
-  if (props.color === "warning") {
-    return true;
-  }
-});
-
-const lightColor = computed(() => {
-  if (props.color === "light") {
+const pen = computed(() => {
+  if (props.icon === "pen") {
     return true;
   }
 });
 
 const props = defineProps({
-  color: {
-    type: String,
-    default: "",
-    required: true,
-  },
   name: {
     type: String,
     default: "",
@@ -139,8 +106,8 @@ const props = defineProps({
   justify-content: center;
   align-items: center;
   background: rgba(6, 6, 6, 0.5);
-  backdrop-filter: blur(0px);
-  -webkit-backdrop-filter: blur(0px);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(3px);
   transition: 1s;
   .base {
     border-radius: 5px;
