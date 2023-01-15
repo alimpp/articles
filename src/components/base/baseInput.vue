@@ -85,6 +85,7 @@ const props = defineProps({
 
 <style lang="scss" scoped>
 .base-input-container {
+  width: 100%;
   display: flex;
   flex-direction: column;
   i {

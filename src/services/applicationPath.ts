@@ -1,4 +1,5 @@
 export const application_base_url: string = "https://conduit.productionready.io";
+export const application_auth_base_url: string = "https://bookcart.azurewebsites.net";
 
 export const application_path = {
   GET: {
@@ -6,8 +7,8 @@ export const application_path = {
     USER_INFORMATION: "/api/user",
   },
   POST: {
-    LOGIN: "/api/users/login",
-    REGISTER: "/api/users",
+    LOGIN: "/api/Login",
+    REGISTER: "/api/User",
   },
   PUT: {},
   DELETE: {},
