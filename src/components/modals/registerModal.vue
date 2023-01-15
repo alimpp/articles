@@ -1,44 +1,39 @@
 <template>
-  <baseModal color="primary" name="Sign up" width="90%" btnSmallSize="true">
+  <baseModal color="primary" name="Sign up" width="350px" btnSmallSize="true">
     <template #modalContent>
-      <div class="register-container">
-        <div class="image-container">
-          <img src="@/assets/icons/app-logo.png" alt="app logo" />
-        </div>
-        <div class="form-container px-5">
-          <span class="primary_color size_large py-2">SIGN UP TO ARTICLES</span>
-          <baseInput
-            :hasError="errors.fristname"
-            :textError="textErrors.fristname"
-            placeholder="Fristname"
-            icon="user"
-            class="mt-2"
-            v-model="data.fristname"
+      <div class="form-container px-1">
+        <span class="primary_color size_large py-2">SIGN UP TO ARTICLES</span>
+        <baseInput
+          :hasError="errors.fristname"
+          :textError="textErrors.fristname"
+          placeholder="Fristname"
+          icon="user"
+          class="mt-2"
+          v-model="data.fristname"
+        />
+        <baseInput
+          :hasError="errors.username"
+          :textError="textErrors.username"
+          placeholder="Username"
+          icon="user"
+          class="mt-2"
+          v-model="data.username"
+        />
+        <baseInput
+          :hasError="errors.password"
+          :textError="textErrors.password"
+          placeholder="Password"
+          icon="password"
+          class="mt-2"
+          v-model="data.password"
+        />
+        <div class="d-flex">
+          <baseButton
+            @click="registerUser"
+            class="mt-2 mb-4"
+            color="primary"
+            name="Sign up"
           />
-          <baseInput
-            :hasError="errors.username"
-            :textError="textErrors.username"
-            placeholder="Username"
-            icon="user"
-            class="mt-2"
-            v-model="data.username"
-          />
-          <baseInput
-            :hasError="errors.password"
-            :textError="textErrors.password"
-            placeholder="Password"
-            icon="password"
-            class="mt-2"
-            v-model="data.password"
-          />
-          <div class="d-flex">
-            <baseButton
-              @click="registerUser"
-              class="mt-2 mb-4"
-              color="primary"
-              name="Sign up"
-            />
-          </div>
         </div>
       </div>
     </template>
@@ -103,36 +98,11 @@ const registerUser = () => {
 </script>
 
 <style lang="scss" scoped>
-.register-container {
+.form-container {
   width: 100%;
   display: flex;
-  .image-container {
-    width: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    img {
-      width: 50%;
-      height: 250px;
-    }
-  }
-  .form-container {
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-}
-@media (max-width: 900px) {
-  .register-container {
-    flex-direction: column;
-    .image-container {
-      display: none;
-    }
-    .form-container {
-      width: 100%;
-    }
-  }
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 </style>

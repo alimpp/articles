@@ -1,11 +1,7 @@
 <template>
-  <baseModal color="danger" name="Sign in" width="90%" btnSmallSize="true">
+  <baseModal color="danger" name="Sign in" width="350px" btnSmallSize="true">
     <template #modalContent>
-      <div class="login-container">
-        <div class="image-container">
-          <img src="@/assets/icons/app-logo.png" alt="app logo" />
-        </div>
-        <div class="form-container px-5">
+        <div class="form-container px-1">
           <span class="primary_color size_large py-2">SIGN IN TO ARTICLES</span>
           <baseInput
             :hasError="errors.username"
@@ -27,7 +23,6 @@
             <baseButton @click="loginUser" class="mt-2 mb-4" color="primary" name="Sign in" />
           </div>
         </div>
-      </div>
     </template>
   </baseModal>
 </template>
@@ -79,36 +74,11 @@ const loginUser = () => {
 </script>
 
 <style lang="scss" scoped>
-.login-container {
-  width: 100%;
-  display: flex;
-  .image-container {
-    width: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    img {
-      width: 50%;
-      height: 250px;
-    }
-  }
   .form-container {
-    width: 50%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
   }
-}
-@media (max-width: 900px) {
-  .login-container {
-    flex-direction: column;
-    .image-container {
-      display: none;
-    }
-    .form-container {
-      width: 100%;
-    }
-  }
-}
 </style>
