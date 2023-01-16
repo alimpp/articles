@@ -9,8 +9,11 @@ export const application_path = {
   POST: {
     LOGIN: "/api/Login",
     REGISTER: "/api/User",
+    CREATE_ARTICLE: '/posts'
   },
-  PUT: {},
+  PUT: {
+    EDIT_ARTICLE: '/posts'
+  },
   DELETE: {
     DELETE_ARTICLES: "/posts",
   },

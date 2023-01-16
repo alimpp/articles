@@ -14,7 +14,13 @@
         <p class="gray_color pt-2">{{ dataSource.body }}</p>
         <div class="d-flex">
           <baseButton @click="back" name="Back" color="primary" icon="back" />
-          <editArticleModal v-if="checkAuth" class="mt-1 mx-2" />
+          <editArticleModal
+            :title="dataSource.title"
+            :body="dataSource.body"
+            :id="dataSource.id"
+            v-if="checkAuth"
+            class="mt-1 mx-2"
+          />
         </div>
       </div>
     </div>

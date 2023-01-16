@@ -52,10 +52,6 @@ const isOpen = ref(false);
 
 const openSideBar = () => {
   isOpen.value = !isOpen.value;
-  loading.value = true;
-  setTimeout(() => {
-    loading.value = false;
-  }, 2000);
 };
 
 const watchTheme = computed(() => {

@@ -1,6 +1,6 @@
 <template>
   <div class="base-divider-container d-flex flex-column">
-    <span class="size_samll">{{ text }}</span>
+    <span class="size_medium">{{ text }}</span>
     <div class="line warning_color_bg" :style="{'width': width}"></div>
   </div>
 </template>

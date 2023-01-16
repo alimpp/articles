@@ -13,5 +13,8 @@ export const applicationArticles = defineStore("articles", {
     deleteArticle(id) {
       this.articles = this.articles.filter((article) => article.id != id);
     },
+    updateArticles(data){
+      return this.articles.unshift(data)
+    },
   },
 });

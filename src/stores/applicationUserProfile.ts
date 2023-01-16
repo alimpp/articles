@@ -35,7 +35,6 @@ export const applicationUserProfile = defineStore("userprofile", {
       this.username = username;
     },
     updateBio(bio: string) {
-      console.log(bio);
       updateLocalStorage("bio", bio);
       toast_message("Your bio is updated", "success", 2000);
       setTimeout(() => {

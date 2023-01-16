@@ -3,7 +3,8 @@
     <applicationHeader />
     <baseLoading v-if="loading" />
     <div class="row px-3 app_animation" v-else>
-      <div class="col-lg-4" v-for="data in dataSource" :key="data.id">
+      <baseDivider text="Articles" width="80px" class="mt-3"/>
+      <div class="col-lg-4 mt-3" v-for="data in dataSource" :key="data.id">
           <articleCard :title="data.title" :body="data.body" :id="data.id" />
       </div>
     </div>
@@ -17,6 +18,7 @@ import { applicationArticles } from "@/stores/applicationArticles";
 import articleCard from "@/components/cards/articleCard";
 import applicationHeader from "@/components/applicationHeader";
 import baseLoading from "@/components/base/baseLoading";
+import baseDivider from '@/components/base/baseDivider'
 
 const articlesApiModule = applicationArticlesApi();
 const articlesModule = applicationArticles();
