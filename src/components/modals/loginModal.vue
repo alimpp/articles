@@ -1,31 +1,32 @@
 <template>
-  <baseModal color="danger" name="Sign in" width="90%" btnSmallSize="true">
+  <baseModal color="danger" name="Sign in" width="350px" btnSmallSize="true">
     <template #modalContent>
-      <div class="login-container">
-        <div class="image-container">
-          <img src="@/assets/icons/app-logo.png" alt="app logo" />
-        </div>
-        <div class="form-container px-5">
-          <span class="primary_color size_large py-2">SIGN IN TO ARTICLES</span>
-          <baseInput
-            :hasError="errors.username"
-            :textError="textErrors.username"
-            placeholder="Username"
-            icon="user"
-            class="mt-2"
-            v-model="data.username"
+      <div class="form-container px-1">
+        <span class="primary_color size_large py-2">SIGN IN TO ARTICLES</span>
+        <baseInput
+          :hasError="errors.username"
+          :textError="textErrors.username"
+          placeholder="Username"
+          icon="user"
+          class="mt-2"
+          v-model="data.username"
+        />
+        <baseInput
+          :hasError="errors.password"
+          :textError="textErrors.password"
+          placeholder="Password"
+          icon="password"
+          class="mt-2"
+          v-model="data.password"
+        />
+        <div class="d-flex">
+          <baseButton
+            @click="loginUser"
+            class="mt-2 mb-4"
+            color="primary"
+            name="Sign in"
+            :loading="loading"
           />
-          <baseInput
-            :hasError="errors.password"
-            :textError="textErrors.password"
-            placeholder="Password"
-            icon="password"
-            class="mt-2"
-            v-model="data.password"
-          />
-          <div class="d-flex">
-            <baseButton @click="loginUser" class="mt-2 mb-4" color="primary" name="Sign in" />
-          </div>
         </div>
       </div>
     </template>
@@ -40,6 +41,7 @@ import baseButton from "@/components/base/baseButton";
 import { applicationAuthApi } from "@/stores/api/applicationAuthApi";
 
 const authApi = applicationAuthApi();
+const loading = ref(false)
 
 const data = ref({
   username: "",
@@ -56,7 +58,7 @@ const textErrors = ref({
   password: "The password must not be empty and must be more than 5 characters",
 });
 
-const loginUser = () => {
+const loginUser = async () => {
   let access = true;
   if (data.value.username.length < 5) {
     access = false;
@@ -73,42 +75,19 @@ const loginUser = () => {
     errors.value.password = false;
   }
   if (access) {
-    authApi.loginUser(data.value);
+   loading.value = true
+   await authApi.loginUser(data.value);
+   loading.value = false
   }
 };
 </script>
 
 <style lang="scss" scoped>
-.login-container {
+.form-container {
   width: 100%;
   display: flex;
-  .image-container {
-    width: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    img {
-      width: 50%;
-      height: 250px;
-    }
-  }
-  .form-container {
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-}
-@media (max-width: 900px) {
-  .login-container {
-    flex-direction: column;
-    .image-container {
-      display: none;
-    }
-    .form-container {
-      width: 100%;
-    }
-  }
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 </style>

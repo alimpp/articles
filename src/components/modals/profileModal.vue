@@ -9,9 +9,9 @@
     <template #modalContent>
       <div class="d-flex">
         <div class="px-2">
-          <img src="@/assets/icons/smile.png" alt="image profile" />
+          <img src="@/assets/icons/profile.jpeg" alt="image profile" />
         </div>
-        <div class="d-flex flex-column">
+        <div class="d-flex flex-column px-2">
           <span class="size_small">Username</span>
           <p class="gray_color size_very_small">{{ username }}</p>
           <span class="size_small">Bio</span>
@@ -54,8 +54,8 @@ const bio = computed(() => {
 
 <style>
 img {
-  width: 120px;
-  height: 120px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
 }
 </style>

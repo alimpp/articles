@@ -30,7 +30,11 @@ export const applicationAuthApi = defineStore("auth", {
           }, 2000);
         })
         .catch((err) => {
-          console.log(err);
+          toast_message(
+            "Your conection is low please try again",
+            "error",
+            2000
+          );
         });
     },
     async loginUser(data: any) {

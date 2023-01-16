@@ -1,48 +1,36 @@
 <template>
-  <div class="cart-sidebar-container">
-    <i class="bi bi-cart4 application_pointer" @click="openSideBar"></i>
-    <div class="cart-sidebar" v-if="isOpen">
+  <div class="sidebar-container">
+    <i
+      class="bi bi-list-nested size_large app_pointer"
+      @click="openSideBar"
+    ></i>
+    <div class="nav-sidebar" v-if="isOpen">
       <div
         class="sidebar"
         :class="{
-          dark: watchTheme === 'dark',
-          light: watchTheme === 'light',
+          mobilenav_dark_mode_theme: watchTheme === 'dark',
+          mobilenav_light_mode_theme: watchTheme === 'light',
         }"
       >
         <i
-          class="bi bi-x-lg application_animation application_pointer"
+          class="bi bi-x-lg app_animation app_pointer"
           @click="openSideBar"
         ></i>
-        <baseLoading v-if="loading" class="mt-5" />
-        <div class="d-flex flex-column application_animation" v-else>
-          <div
-            class="empty-container d-flex flex-column justify-content-center align-items-center mt-5"
-            v-if="emptyCart == 0"
-          >
-            <i class="bi bi-cart4"></i>
-            <span>Your cart is empty</span>
+        <div
+          class="d-flex flex-column justify-content-center align-items-center application_animation"
+        >
+          <div class="d-flex flex-column mt-5" v-if="checkAuth">
+            <img src="@/assets/icons/profile.jpeg" alt="image profile" />
+            <profileModal class="mt-2" />
           </div>
-          <div v-else>
-            <cartsCard
-              v-for="data in dataSource"
-              :key="data.id"
-              :img="data.coverFileName"
-              :title="data.title"
-              :price="data.price"
-              :quantity="data.quantity"
-              :id="data.bookId"
-            />
-            <hr />
-            <div class="d-flex w-100">
-              <div class="d-flex justify-content-start w-50">
-                <span class="pt-1">{{ totalPrice }}/00 $</span>
-              </div>
-              <div class="d-flex justify-content-end w-50">
-                <baseButton name="Checkout" color="btn-primary" />
-              </div>
-            </div>
-            <hr />
-            <baseButton @click="clearCart" name="Clear Cart" icon="delete" color="btn-danger" />
+          <registerModal class="mt-5" v-if="!checkAuth" />
+          <createArticleModal class="mt-5" v-if="checkAuth" />
+          <div class="d-flex mt-2">
+            <i class="bi bi-instagram px-1"></i>
+            <i class="bi bi-linkedin px-1"></i>
+            <i class="bi bi-telegram px-1"></i>
+            <i class="bi bi-facebook px-1"></i>
+            <i class="bi bi-twitter px-1"></i>
           </div>
         </div>
       </div>
@@ -53,45 +41,31 @@
 <script setup>
 import { ref, computed } from "vue";
 import { applicationTheme } from "@/stores/applicationTheme";
-import baseLoading from "@/components/base/baseLoading";
-import { applicationCart } from "@/stores/applicationCart";
-import cartsCard from "@/components/cards/cartsCard";
-import baseButton from "@/components/base/baseButton";
+import {applicationUserProfile} from '@/stores/applicationUserProfile'
+import profileModal from "@/components/modals/profileModal";
+import createArticleModal from "@/components/modals/createArticleModal";
+import registerModal from "@/components/modals/registerModal";
+
+const userProfile = applicationUserProfile();
 const theme = applicationTheme();
-const carts = applicationCart();
-const loading = ref(false);
 const isOpen = ref(false);
+
 const openSideBar = () => {
   isOpen.value = !isOpen.value;
-  loading.value = true;
-  setTimeout(() => {
-    loading.value = false;
-  }, 2000);
 };
+
 const watchTheme = computed(() => {
   return theme.themeStatus;
 });
-const dataSource = computed(() => {
-  return carts.cartsInformation;
+
+const checkAuth = computed(() => {
+  return userProfile.isAuthenticated;
 });
-const emptyCart = computed(() => {
-  return carts.cartsCount;
-});
-const totalPrice = computed(() => {
-  return carts.totalPrice;
-});
-const clearCart = () => {
-  return carts.clearCart()
-}
 </script>
 
 <style lang="scss" scoped>
-@import "@/assets/scss/_variables/font-size.scss";
-.cart-sidebar-container {
-  i {
-    font-size: $--size-xl;
-  }
-  .cart-sidebar {
+.sidebar-container {
+  .nav-sidebar {
     position: fixed;
     top: 0;
     bottom: 0;
@@ -114,16 +88,7 @@ const clearCart = () => {
     animation: 0.2s opanSidebar;
     overflow-y: scroll;
     overflow-x: none;
-    .empty-container {
-      height: 75vh;
-    }
   }
-}
-.light {
-  background: var(--light-color);
-}
-.dark {
-  background: var(--cart-sidebar-in-dark-mode);
 }
 @keyframes opanSidebar {
   0% {

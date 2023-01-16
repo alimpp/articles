@@ -5,7 +5,7 @@
       :class="watchTheme === 'dark' ? 'text-light' : 'text-dark'"
       role="status"
     ></div>
-    <span class="px-2">{{ $t("loading") }} ... </span>
+    <span class="px-2">Please loading ... </span>
   </div>
 </template>
 
@@ -21,7 +21,7 @@ const watchTheme = computed(() => {
 <style lang="scss" scoped>
 .base-loading-container {
   width: 100;
-  height: 70vh;
+  height: 50vh;
   display: flex;
   justify-content: center;
   align-items: center;

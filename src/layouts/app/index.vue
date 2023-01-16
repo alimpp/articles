@@ -11,13 +11,15 @@
         <img src="@/assets/icons/app-logo.png" alt="app logo" />
       </div>
       <div class="item-container">
-        <profileModal v-if="checkAuth" class="mt-2 mx-2" />
+        <profileModal v-if="checkAuth" class="mt-2 mx-2 mobile-size" />
+        <createArticleModal v-if="checkAuth" class="mt-2 mx-2 mobile-size" />
         <loginModal v-if="!checkAuth" class="mt-2 mx-3" />
-        <registerModal v-if="!checkAuth" class="mx-3 mt-2" />
+        <registerModal v-if="!checkAuth" class="mx-3 mt-2 mobile-size" />
         <themeSwicther class="mt-1" />
+        <mobileNav class="mt-1 desktop-size" />
       </div>
     </div>
-    <applicationHeader />
+
     <router-view></router-view>
   </div>
 </template>
@@ -31,6 +33,8 @@ import themeSwicther from "@/components/themeSwicther";
 import profileModal from "@/components/modals/profileModal";
 import applicationHeader from "@/components/applicationHeader";
 import { applicationUserProfile } from "@/stores/applicationUserProfile";
+import createArticleModal from "@/components/modals/createArticleModal";
+import mobileNav from "@/components/mobileNav";
 
 const userProfile = applicationUserProfile();
 const theme = applicationTheme();
@@ -40,7 +44,7 @@ const watchTheme = computed(() => {
 });
 
 const checkAuth = computed(() => {
-  return userProfile.isAuthenticated
+  return userProfile.isAuthenticated;
 });
 </script>
 
@@ -67,6 +71,20 @@ const checkAuth = computed(() => {
       display: flex;
       justify-content: end;
     }
+  }
+}
+.mobile-size {
+  display: inline;
+}
+.desktop-size {
+  display: none;
+}
+@media (max-width: 900px) {
+  .mobile-size {
+    display: none;
+  }
+  .desktop-size {
+    display: inline;
   }
 }
 </style>
