@@ -19,6 +19,11 @@ const routes: Array<RouteRecordRaw> = [
       },
     ],
   },
+  {
+    path: "/:pathMatch(.*)*",
+    name: "not found",
+    component: () => import("@/layouts/404/index.vue"),
+  },
 ];
 
 const router = createRouter({
