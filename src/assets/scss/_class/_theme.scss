@@ -6,7 +6,7 @@
   transition: 0.3s;
 }
 .application_light_mode_theme {
-  background-color: var(--white-color);
+  background-color: var(--light-color);
   color: var(--dark-color);
   transition: 0.3s;
 }
@@ -17,6 +17,17 @@
   transition: 0.3s;
 }
 .nav_light_mode_theme {
+  background-color: var(--white-color);
+  color: var(--dark-color);
+  transition: 0.3s;
+}
+
+.mobilenav_dark_mode_theme {
+  background-color: var(--dark-color);
+  color: var(--light-color);
+  transition: 0.3s;
+}
+.mobilenav_light_mode_theme {
   background-color: var(--white-color);
   color: var(--dark-color);
   transition: 0.3s;
@@ -39,7 +50,7 @@
   transition: 0.3s;
 }
 .basecard_light_mode_theme {
-  background-color: var(--light-color);
+  background-color: var(--white-color);
   color: var(--dark-color);
   transition: 0.3s;
 }

@@ -9,5 +9,9 @@ export const applicationArticles = defineStore("articles", {
       return state.article;
     },
   },
-  actions: {},
+  actions: {
+    deleteArticle(id) {
+      this.articles = this.articles.filter((article) => article.id != id);
+    },
+  },
 });

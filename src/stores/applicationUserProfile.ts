@@ -22,12 +22,10 @@ export const applicationUserProfile = defineStore("userprofile", {
         this.isAuthenticated = true;
         this.token = token;
         axios.defaults.headers.common["Authorization"] = "Token " + token;
-        console.log("token done");
       } else {
         this.isAuthenticated = false;
         this.token = "";
         axios.defaults.headers.common["Authorization"] = "";
-        console.log("error token");
       }
     },
     updateToken(token: string) {
@@ -40,6 +38,9 @@ export const applicationUserProfile = defineStore("userprofile", {
       console.log(bio);
       updateLocalStorage("bio", bio);
       toast_message("Your bio is updated", "success", 2000);
+      setTimeout(() => {
+        location.reload()
+      } , 2000)
     },
   },
 });
